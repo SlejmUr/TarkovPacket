@@ -11,4 +11,16 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="bsg.componentace.compression.libs.zlib">
+      <HintPath>DLL\bsg.componentace.compression.libs.zlib.dll</HintPath>
+    </Reference>
+    <Reference Include="bsg.system.buffers">
+      <HintPath>DLL\bsg.system.buffers.dll</HintPath>
+    </Reference>
+	  <Reference Include="bsg.microsoft.extensions.objectpool">
+		  <HintPath>DLL\bsg.microsoft.extensions.objectpool.dll</HintPath>
+	  </Reference>
+  </ItemGroup>
+
 </Project>

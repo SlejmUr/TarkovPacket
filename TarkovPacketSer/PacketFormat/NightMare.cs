@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComponentAce.Compression.Libs.zlib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.PortableExecutable;
@@ -19,7 +20,9 @@ namespace TarkovPacketSer.PacketFormat
             replyPacket.Id = reader.ReadInt32();
             replyPacket.prefabsData = reader.ReadBytesAndSize();
             replyPacket.customiationData = reader.ReadBytesAndSize();
-
+            var now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            File.WriteAllBytes($"nightmare_prefabs_{now}.txt", SimpleZlib.DecompressToBytes(replyPacket.prefabsData));
+            File.WriteAllBytes($"nightmare_customiationData_{now}.txt", SimpleZlib.DecompressToBytes(replyPacket.customiationData));
             reader.Close();
             reader.Dispose();
             return replyPacket;

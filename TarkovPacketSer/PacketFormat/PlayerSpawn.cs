@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComponentAce.Compression.Libs.zlib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -6,6 +7,7 @@ using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using TarkovPacketSer.BSG_Classes;
+using static TarkovPacketSer.PacketFormat.ConnectionRequestPacker;
 
 namespace TarkovPacketSer.PacketFormat
 {
@@ -33,6 +35,18 @@ namespace TarkovPacketSer.PacketFormat
             packet.InventoryZip = binaryReader.SafeReadSizeAndBytes();
             packet.profileZip = binaryReader.SafeReadSizeAndBytes();
             packet.searchInfoSerilationBytes = binaryReader.SafeReadSizeAndBytes();
+            var now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            try
+            {
+                File.WriteAllBytes($"PlayerSpawn_InventoryZip_{now}.txt", SimpleZlib.DecompressToBytes(packet.InventoryZip));
+                File.WriteAllBytes($"PlayerSpawn_profileZip_{now}.txt", SimpleZlib.DecompressToBytes(packet.profileZip));
+                File.WriteAllBytes($"PlayerSpawn_searchInfoSerilationBytes_{now}.txt", SimpleZlib.DecompressToBytes(packet.searchInfoSerilationBytes));
+            }
+            catch
+            {
+
+            }
+
             packet.mongoId = new(binaryReader);
             if (packet.IsAlive)
             {

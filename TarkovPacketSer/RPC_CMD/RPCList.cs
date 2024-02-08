@@ -1,0 +1,62 @@
+﻿namespace TarkovPacketSer.RPC_CMD
+{
+    internal static class RPCList
+    {
+        public static Dictionary<int, string> RPCCMDKV =  new Dictionary<int, string>()
+        {
+            //Commands
+            { -1723132743, "CmdSpawn" },
+            { 740792038, "CmdRespawn" },
+            { -1220356686, "CmdStartGame" },
+            { 1792897173, "CmdStartGameAfterTeleport" },
+            { 273195288, "CmdRestartGameInitiate" },
+            { -1501005473, "CmdRestartGame" },
+            { -40021267, "CmdGameStarted" },
+            { -750099178, "CmdStopGame" },
+            { 463608476, "CmdSyncGameTime" },
+            { -1035840717, "CmdDevelopRequestBot" },
+            { 1432950484, "CmdDevelopRequestBotZones" },
+            { 930653927, "CmdDevelopRequestBotGroups" },
+            { -503414723, "CmdDevelopRequestBotProfiles" },
+            { -1581543574, "CmdDevelopmentSpawnBotRequest" },
+            { 102630535, "CmdDevelopmentSpawnBotOnServer" },
+            { -349255409, "CmdDevelopmentSpawnBotOnClient" },
+            { -1733636721, "CmdDisconnectAcceptedOnClient" },
+            { 1240699829, "CmdWorldSpawnConfirm" },
+            { -1317447737, "CmdSpawnConfirm" },
+            { 810388720, "CmdReportVoipAbuse" },
+            { 905971479, "CmdPlayerEffectsPause" },
+            { -65034947, "CmdOnPlayerKeeperStatisticsChanged" },
+            { -942910572, "CmdGetRadiotransmitterData" },
+            { 1404634890, "CmdGetTraderServicesData" },
+            //  RPC
+            { -1952818640, "RpcGameSpawned" },
+            { 2117859815, "RpcGameMatching" },
+            { -1157222870, "RpcGameStarting" },
+            { 1572370779, "RpcGameStartingWithTeleport" },
+            { -1838445225, "RpcGameStarted" },
+            { 94275293, "RpcGameRestarting" },
+            { -1243884988, "RpcGameRestarted" },
+            { -758380962, "RpcGameStopping" },
+            { -1825579357, "RpcGameStopped" },
+            { 547040626, "RpcSyncGameTime" },
+            { 1152897188, "RpcDevelopSendBotData" },
+            { -1920895376, "RpcDevelopSendBotDataZone" },
+            { 314346392, "RpcDevelopSendBotDataGroups" },
+            { -69469010, "RpcDevelopSendBotDataProfiles" },
+            { -1269941968, "RpcDevelopmentSpawnBotResponse" },
+            { -435294673, "RpcSoftStopNotification" },
+            { 1124901489, "RpcStartDisconnectionProcedure" },
+            { 1547608889, "RpcVoipAbuseNotification" },
+            { -2040405782, "RpcAirdropContainerData" },
+            { -689857055, "RpcMineDirectionExplosion" },
+            { -2141949542, "RpcSuccessAirdropFlareEvent" },
+            { 778150830, "RpcBufferZoneData" },
+            { -52162261, "RpcSendClientRadioTransmitterData" },
+            { 1358208182, "RpcSendObserverRadioTransmitterData" },
+            { -1785644202, "RpcSendTraderServicesData" },
+            { 361141025, "RpcSyncLighthouseTraderZoneData" },
+            { -1536532007, "RpcSendCompletedAchievementsData" },
+        };
+    }
+}
