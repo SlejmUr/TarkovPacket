@@ -18,12 +18,17 @@ namespace TarkovPacketSer
 
             foreach (var file in files)
             {
-                Console.WriteLine();
+                
                 FileInfo fileInfo = new FileInfo(file);
 
                 //  currently we dont care about encrypting packets
                 if (fileInfo.Name.Contains("EN"))
                     continue;
+
+                // also we dont care about stacktrace's
+                if (fileInfo.Name.Contains("stacktrace"))
+                    continue;
+
                 var splittedname = fileInfo.Name.Split("_");
                 var realname = splittedname[splittedname.Count() - 2];
 
@@ -31,9 +36,13 @@ namespace TarkovPacketSer
                 if (bytes.Length < 4)
                     continue;
                 var msg = PacketIdentifier.GetMsgType(bytes, out short sh);
+                if (msg != MsgTypeEnum.Unknown)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(realname);
+                    Console.WriteLine(msg.ToString() + $" ({sh})");
+                }
 
-                Console.WriteLine(realname);
-                Console.WriteLine(msg.ToString() + $" ({sh})");
 
                 switch (msg)
                 {

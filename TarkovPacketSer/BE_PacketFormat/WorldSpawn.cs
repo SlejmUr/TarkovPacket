@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using TarkovPacketSer.BSG_Classes;
+using TarkovPacketSer.Enums;
 
 namespace TarkovPacketSer.BE_PacketFormat
 {
@@ -18,8 +19,8 @@ namespace TarkovPacketSer.BE_PacketFormat
             replyPacket.InitializeDoors(binaryReader);
             replyPacket.InitializeLampControllers(binaryReader);
             replyPacket.InitializeWindowBreakers(binaryReader);
-            //SynchronizableObjectType
-            //BTR
+            replyPacket.SynchronizableObjectType(binaryReader);
+            replyPacket.ReadBTR(binaryReader);
             binaryReader.Close();
             binaryReader.Dispose();
             return replyPacket;
@@ -77,11 +78,42 @@ namespace TarkovPacketSer.BE_PacketFormat
             }
         }
 
+        void SynchronizableObjectType(BinaryReader reader)
+        {
+            Int32 SynchronizableObjectTypesCount = reader.ReadUInt16();
+            Console.WriteLine(SynchronizableObjectTypesCount);
+            SynchronizableObjectTypes = new();
+            for (Int32 i = 0; i < SynchronizableObjectTypesCount; i++)
+            {
+                var type = (ESynchronizableObjectType)reader.ReadByte();
+                if (type == ESynchronizableObjectType.AirDrop)
+                {
+                    AirDrop airDrop = new();
+                    airDrop.Deserialize(reader);
+                    SynchronizableObjectTypes.Add((type,airDrop));
+                }
+                else if (type == ESynchronizableObjectType.AirPlane)
+                {
+                    AirPlane airPlane = new();
+                    airPlane.Deserialize(reader);
+                    SynchronizableObjectTypes.Add((type, airPlane));
+                }
+            }
+        }
+
+        void ReadBTR(BinaryReader reader)
+        {
+            BTR = new();
+            BTR.Deserialize(reader);
+        }
+
         public ExfiltrationController exfiltrationController;
         public BufferZoneControllerClass bufferZoneControllerClass;
         public List<SmokeGrenadeInfo> SmokeGrenades;
         public List<DoorInfo> DoorInfos;
         public List<LampControllerInfo> LampControllerInfos;
         public List<WindowBreakerInfo> WindowBreakerInfos;
+        public List<(ESynchronizableObjectType, object)> SynchronizableObjectTypes;
+        public BTR BTR;
     }
 }

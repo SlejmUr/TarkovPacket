@@ -33,6 +33,9 @@ namespace TarkovPacketSer
                 FileInfo fileInfo = new FileInfo(file);
                 if (fileInfo.Name.Contains("NULL"))
                     continue;
+                // also we dont care about stacktrace's
+                if (fileInfo.Name.Contains("stacktrace"))
+                    continue;
                 var name = fileInfo.Name.Split("_");
                 var isReply = fileInfo.Name.Contains("SendWriter");
                 string realname = string.Empty;

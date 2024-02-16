@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ComponentAce.Compression.Libs.zlib;
+using Newtonsoft.Json;
 using TarkovPacketSer.PacketFormat;
 using static TarkovPacketSer.PacketFormat.PartialCommand;
 
@@ -19,7 +20,7 @@ namespace TarkovPacketSer
             {
                 files = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\UN");
             }
-            else
+            else if (args.Length == 1)
             {
                 if (args[0].Contains("\\"))
                     files = Directory.GetFiles(args[0]);
@@ -29,16 +30,21 @@ namespace TarkovPacketSer
                     ParsePacketInt(args[0]);
                     Environment.Exit(0);
                 }
+                if (files[0].Contains("UN"))
+                {
+                    UN_Parser.Parse(files);
+                }
+                if (files[0].Contains("BE"))
+                {
+                    BE_Parser.Parse(files);
+                }
             }
-            
-            if (files[0].Contains("UN"))
+            else if (args.Length == 2)
             {
-                UN_Parser.Parse(files);
+                File.WriteAllBytes(args[0], SimpleZlib.DecompressToBytes(File.ReadAllBytes(args[1])));
+
             }
-            if (files[0].Contains("BE"))
-            {
-                BE_Parser.Parse(files);
-            }
+
 
         }
 
