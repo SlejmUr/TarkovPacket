@@ -1,9 +1,4 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TarkovPacketSer.BE_PacketFormat
 {
@@ -15,7 +10,7 @@ namespace TarkovPacketSer.BE_PacketFormat
             SubWorldSpawnLoot replyPacket = new();
             BinaryReader binaryReader = new(new MemoryStream(data));
             replyPacket.flag = binaryReader.ReadBoolean();
-            
+
             if (replyPacket.flag)
             {
                 replyPacket.loots = binaryReader.ReadBytesAndSize();

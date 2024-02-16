@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TarkovPacketSer.BSG_Enums;
+﻿using TarkovPacketSer.BSG_Enums;
 using TarkovPacketSer.Enums;
 using TarkovPacketSer.RetardedBitReader;
 using static TarkovPacketSer.BSG_Classes.Packets.DeserializerPacketsEXT;

@@ -6,8 +6,8 @@ namespace TarkovPacketSer.Enums;
 [JsonConverter(typeof(StringEnumConverter))]
 public enum EAirdropType
 {
-	Common,
-	Supply,
-	Medical,
-	Weapon
+    Common,
+    Supply,
+    Medical,
+    Weapon
 }

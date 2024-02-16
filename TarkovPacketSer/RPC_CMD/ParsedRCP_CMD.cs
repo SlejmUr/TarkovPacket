@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TarkovPacketSer.RPC_CMD
+﻿namespace TarkovPacketSer.RPC_CMD
 {
     internal class ParsedRCP_CMD
     {
@@ -29,7 +23,7 @@ namespace TarkovPacketSer.RPC_CMD
                 }
 
             }
-                
+
             binaryReader.Close();
             binaryReader.Dispose();
             return ret;

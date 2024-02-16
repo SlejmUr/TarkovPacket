@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TarkovPacketSer.BE_PacketFormat;
-using TarkovPacketSer.BSG_Classes.Packets;
-using TarkovPacketSer.BSG_Enums;
+﻿using TarkovPacketSer.BSG_Classes.Packets;
 using TarkovPacketSer.RetardedBitReader;
-using static TarkovPacketSer.BSG_Classes.Packets.DeserializerPacketsEXT;
 
 namespace TarkovPacketSer.BSG_Classes
 {

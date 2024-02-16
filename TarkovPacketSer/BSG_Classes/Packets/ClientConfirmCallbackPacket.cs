@@ -2,7 +2,7 @@
 {
     public struct ClientConfirmCallbackPacket : INested<ClientConfirmCallbackPacket>
     {
-        public INested<ClientConfirmCallbackPacket> Nested { get ; set; }
+        public INested<ClientConfirmCallbackPacket> Nested { get; set; }
 
         public uint CallbackId;
 

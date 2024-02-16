@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TarkovPacketSer.BSG_Classes
+﻿namespace TarkovPacketSer.BSG_Classes
 {
     internal class VoipSettings
     {
@@ -16,7 +10,7 @@ namespace TarkovPacketSer.BSG_Classes
             this.PushToTalkSettings = PushToTalkSettings.Default;
             this.PushToTalkSettings.Deserialize(reader);
         }
-        public bool VoipEnabled; 
+        public bool VoipEnabled;
         public VoipQualitySettings VoipQualitySettings;
         public PushToTalkSettings PushToTalkSettings;
     }

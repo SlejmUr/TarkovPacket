@@ -1,6 +1,4 @@
-﻿using System.IO;
-using TarkovPacketSer.BSG_Enums;
-using static TarkovPacketSer.PacketFormat.PartialCommand;
+﻿using TarkovPacketSer.BSG_Enums;
 
 namespace TarkovPacketSer.PacketFormat
 {
@@ -42,7 +40,7 @@ namespace TarkovPacketSer.PacketFormat
             return replyPacket;
         }
 
-        
+
 
         public static void DataWorker()
         {
@@ -80,13 +78,13 @@ namespace TarkovPacketSer.PacketFormat
             foreach (var item in CommandBytes)
             {
                 var byts = item.Value.Item1.ToArray();
-                File.WriteAllBytes("PartialCommand_" + item.Key  + "_" + item.Value.Item2+ ".bytes", byts);
+                File.WriteAllBytes("PartialCommand_" + item.Key + "_" + item.Value.Item2 + ".bytes", byts);
 
                 if (item.Value.Item2 == 155)
                 {
                     PlayerSpawn.Deserialize(byts);
                 }
-            }   
+            }
         }
 
 

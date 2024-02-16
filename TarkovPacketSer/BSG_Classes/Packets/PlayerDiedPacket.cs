@@ -1,7 +1,7 @@
 ﻿using TarkovPacketSer.BSG_Enums;
 
 namespace TarkovPacketSer.BSG_Classes.Packets
-{    
+{
     public struct PlayerDiedPacket
     {
         public string Aggressor;

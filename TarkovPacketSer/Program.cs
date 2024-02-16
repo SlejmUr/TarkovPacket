@@ -1,6 +1,4 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
-using Newtonsoft.Json;
-using TarkovPacketSer.PacketFormat;
 using static TarkovPacketSer.PacketFormat.PartialCommand;
 
 namespace TarkovPacketSer
@@ -11,7 +9,7 @@ namespace TarkovPacketSer
 
         static void Main(string[] args)
         {
-            
+
             string[] files = new string[0];
             Console.WriteLine("Hello, World!");
             Console.WriteLine(args.Length);

@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Numerics;
+﻿using System.Numerics;
 using TarkovPacketSer.BSG_Classes;
 using TarkovPacketSer.BSG_Enums;
 

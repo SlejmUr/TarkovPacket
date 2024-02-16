@@ -1,12 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using TarkovPacketSer.BE_PacketFormat;
-using TarkovPacketSer.PacketFormat;
 
 namespace TarkovPacketSer
 {
@@ -21,7 +14,7 @@ namespace TarkovPacketSer
 
             foreach (var file in files)
             {
-                
+
                 FileInfo fileInfo = new FileInfo(file);
 
                 //  currently we dont care about encrypting packets
@@ -61,7 +54,7 @@ namespace TarkovPacketSer
                             continue;
                     }
                 }
-                
+
                 if (stackFunctionMethodID == MessageFromServer.Token)
                 {
                     messageFromServer.Deserializer(File.ReadAllBytes(file));
@@ -69,7 +62,7 @@ namespace TarkovPacketSer
                     {
                         Json = MessageFromServer.Deserialize(File.ReadAllBytes(file)),
                         Time = realname,
-                        MsgType =  MsgTypeEnum.messageFromServer
+                        MsgType = MsgTypeEnum.messageFromServer
                     });
                 }
 

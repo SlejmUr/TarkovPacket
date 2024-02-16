@@ -4,13 +4,13 @@ using Newtonsoft.Json.Converters;
 namespace TarkovPacketSer.Enums;
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum ELampState 
+public enum ELampState
 {
-	TurningOn,
-	TurningOff,
-	On,
-	Off,
-	Destroyed,
-	ConstantFlickering,
-	SmoothOff
+    TurningOn,
+    TurningOff,
+    On,
+    Off,
+    Destroyed,
+    ConstantFlickering,
+    SmoothOff
 }

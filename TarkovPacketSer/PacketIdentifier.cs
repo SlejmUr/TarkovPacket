@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TarkovPacketSer
+﻿namespace TarkovPacketSer
 {
     internal class PacketIdentifier
     {
@@ -13,7 +7,7 @@ namespace TarkovPacketSer
             var msg = data.Skip(2).Take(2).ToArray();
             sh = BitConverter.ToInt16(msg);
 
-            if (!Enum.IsDefined(typeof(MsgTypeEnum),sh))
+            if (!Enum.IsDefined(typeof(MsgTypeEnum), sh))
                 return MsgTypeEnum.Unknown;
 
             return (MsgTypeEnum)sh;

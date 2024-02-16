@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TarkovPacketSer.BSG_Classes
+﻿namespace TarkovPacketSer.BSG_Classes
 {
     public class MongoID
     {
@@ -19,7 +13,7 @@ namespace TarkovPacketSer.BSG_Classes
             this._stringID = null;
             this._stringID = this.method_1();
         }
-      
+
         public string method_1()
         {
             return MongoID.smethod_0(this._timeStamp, this._counter);

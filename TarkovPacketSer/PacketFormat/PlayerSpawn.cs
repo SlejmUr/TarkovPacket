@@ -1,13 +1,6 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
 using TarkovPacketSer.BSG_Classes;
-using static TarkovPacketSer.PacketFormat.ConnectionRequestPacker;
 
 namespace TarkovPacketSer.PacketFormat
 {
@@ -51,7 +44,7 @@ namespace TarkovPacketSer.PacketFormat
             if (packet.IsAlive)
             {
                 packet.aliveSpawn = new()
-                { 
+                {
                     unk = binaryReader.ReadBoolean(),
                     ScavExfilMask = binaryReader.ReadInt32(),
                     HealthState = binaryReader.SafeReadSizeAndBytes(),
@@ -68,20 +61,20 @@ namespace TarkovPacketSer.PacketFormat
                 if (packet.aliveSpawn.HandsControllerType == 2)
                 {
                     packet.aliveSpawn.fireArm = new()
-                    { 
+                    {
                         isInSpawnOperation = binaryReader.ReadBoolean(),
                         Flag = binaryReader.ReadBoolean()
                     };
                     if (packet.aliveSpawn.fireArm.Flag)
                     {
                         packet.aliveSpawn.fireArm.stationary = new()
-                        { 
+                        {
                             StationaryRotation = binaryReader.ReadVector2(),
                             QuatY = binaryReader.ReadSingle(),
                             QuatW = binaryReader.ReadSingle(),
                         };
                     }
-                    packet.aliveSpawn.StringArrayCount = binaryReader.ReadByte(); 
+                    packet.aliveSpawn.StringArrayCount = binaryReader.ReadByte();
                     string[] array = new string[(int)packet.aliveSpawn.StringArrayCount];
                     for (int i = 0; i < (int)packet.aliveSpawn.StringArrayCount; i++)
                     {

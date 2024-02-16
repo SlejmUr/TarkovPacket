@@ -12,8 +12,8 @@
             AlertDistanceMeters = 5,
             HearingDistance = 50,
             AbuseTraceSeconds = 2f
-        }; 
-        
+        };
+
         public void Deserialize(BinaryReader reader)
         {
             this.SpeakingSecondsLimit = reader.ReadSingle();

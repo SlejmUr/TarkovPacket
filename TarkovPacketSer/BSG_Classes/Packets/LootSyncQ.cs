@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using System;
 using TarkovPacketSer.RetardedBitReader;
 
 namespace TarkovPacketSer.BSG_Classes.Packets

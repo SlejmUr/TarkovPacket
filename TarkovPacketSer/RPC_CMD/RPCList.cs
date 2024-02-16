@@ -2,7 +2,7 @@
 {
     internal static class RPCList
     {
-        public static Dictionary<int, string> RPCCMDKV =  new Dictionary<int, string>()
+        public static Dictionary<int, string> RPCCMDKV = new Dictionary<int, string>()
         {
             //Commands
             { -1723132743, "CmdSpawn" },

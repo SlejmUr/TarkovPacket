@@ -6,6 +6,6 @@ namespace TarkovPacketSer.Enums;
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ESynchronizableObjectType
 {
-	AirDrop,
-	AirPlane
+    AirDrop,
+    AirPlane
 }

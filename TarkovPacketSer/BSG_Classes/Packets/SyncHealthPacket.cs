@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using System.Runtime.InteropServices;
 using TarkovPacketSer.BSG_Enums;
 
 namespace TarkovPacketSer.BSG_Classes.Packets

@@ -27,7 +27,7 @@ namespace TarkovPacketSer
         PeerClientAuthority = 18,
         HLAPIMsg = 28,
         LLAPIMsg = 29,
-        HLAPIResend = 30, 
+        HLAPIResend = 30,
         HLAPIPending = 31,
         Connect = 32,
         Disconnect = 33,

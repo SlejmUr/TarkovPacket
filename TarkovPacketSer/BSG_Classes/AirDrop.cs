@@ -9,7 +9,7 @@ namespace TarkovPacketSer.BSG_Classes
             Id = reader.ReadUInt16();
             Position = reader.ReadVector3();
             Rotation = ToQuaternion(reader.ReadVector3());
-            UniqueId = (int)reader.ReadByte(); 
+            UniqueId = (int)reader.ReadByte();
             AirDropType = reader.ReadByte();
             ObjectId = reader.ReadByte();
             IdString = reader.ProperReadString();

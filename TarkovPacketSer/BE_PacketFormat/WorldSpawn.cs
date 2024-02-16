@@ -33,7 +33,7 @@ namespace TarkovPacketSer.BE_PacketFormat
             this.SmokeGrenades = new();
             for (Int32 i = 0; i < smokeGrenadesCount; i++)
             {
-                SmokeGrenadeInfo smokeGrenadeInfo =new SmokeGrenadeInfo();
+                SmokeGrenadeInfo smokeGrenadeInfo = new SmokeGrenadeInfo();
                 smokeGrenadeInfo.Deserialize(reader);
                 SmokeGrenades.Add(smokeGrenadeInfo);
             }
@@ -90,7 +90,7 @@ namespace TarkovPacketSer.BE_PacketFormat
                 {
                     AirDrop airDrop = new();
                     airDrop.Deserialize(reader);
-                    SynchronizableObjectTypes.Add((type,airDrop));
+                    SynchronizableObjectTypes.Add((type, airDrop));
                 }
                 else if (type == ESynchronizableObjectType.AirPlane)
                 {

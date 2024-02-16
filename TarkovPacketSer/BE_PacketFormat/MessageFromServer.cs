@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-using TarkovPacketSer.BSG_Classes;
+﻿using TarkovPacketSer.BSG_Classes;
 using TarkovPacketSer.BSG_Classes.Packets;
 using TarkovPacketSer.BSG_Enums;
 using TarkovPacketSer.RetardedBitReader;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static TarkovPacketSer.PacketFormat.ConnectionRequestPacker;
 
 namespace TarkovPacketSer.BE_PacketFormat
 {
@@ -19,20 +10,14 @@ namespace TarkovPacketSer.BE_PacketFormat
         public static string Token = "100703687"; // method_10
         public static MessageFromServer Deserialize(byte[] data)
         {
-            Console.WriteLine();
             MessageFromServer replyPacket = new();
-            MyReader reader = new(data); 
-            Console.WriteLine(reader.BytesRead);
+            MyReader reader = new(data);
             replyPacket.ChannnelId = reader.ReadByte();
-            Console.WriteLine(reader.BytesRead);
-            replyPacket.MessageType = (EMessageFromServerType)reader.ReadLimitedInt32(0,3);
-            Console.WriteLine(reader.BytesRead);
-            Console.WriteLine("ChannelId: " + replyPacket.ChannnelId);
-            Console.WriteLine("MessageType: " + replyPacket.MessageType.ToString());
+            replyPacket.MessageType = (EMessageFromServerType)reader.ReadLimitedInt32(0, 3);
             replyPacket.Bytes = reader.Buffer;
             if (replyPacket.MessageType == EMessageFromServerType.Player)
             {
-                
+
                 try
                 {
                     var clientPlayer = ClientPlayer.Deserialize(reader);

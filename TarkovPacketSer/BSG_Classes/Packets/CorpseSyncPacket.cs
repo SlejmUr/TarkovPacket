@@ -51,7 +51,7 @@ namespace TarkovPacketSer.BSG_Classes.Packets
 
         public PacketTransformSyncs[] TransformSyncs;
 
-        public bool IsNotValidPosition; 
+        public bool IsNotValidPosition;
 
         private static readonly UsualPositionQuantizer UsualPositionQuantizer = new UsualPositionQuantizer(-448.0f, 752.0f, 0.001953125f, -250.0f, 250.0f, 0.0009765625f, -280.0f, 260.0f, 0.001953125f, true);
 

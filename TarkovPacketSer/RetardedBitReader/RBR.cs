@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using static TarkovPacketSer.RetardedBitReader.RBR;
-
-namespace TarkovPacketSer.RetardedBitReader
+﻿namespace TarkovPacketSer.RetardedBitReader
 {
     public static class RBR
     {
@@ -89,7 +81,7 @@ namespace TarkovPacketSer.RetardedBitReader
                     EnumStructConverter<T>.func_0 = new Func<T, long>(IntConvert<T>.ToIntCaster);
                     EnumStructConverter<T>.Min = (long)IntConvert<T>.Min;
                     EnumStructConverter<T>.Max = (long)IntConvert<T>.Max;
-                    EnumStructConverter<T>.dictionary_0 = IntConvert<T>.IntToEnumTable.ToDictionary(x=> (long)x.Key,x=> x.Value);
+                    EnumStructConverter<T>.dictionary_0 = IntConvert<T>.IntToEnumTable.ToDictionary(x => (long)x.Key, x => x.Value);
                     return;
                 }
                 if (underlyingType == typeof(short))
@@ -228,7 +220,7 @@ namespace TarkovPacketSer.RetardedBitReader
             {
                 get
                 {
-                    return ((T[])Enum.GetValues(typeof(T))).ToDictionary(x=> (short)((object)x), x=>x);
+                    return ((T[])Enum.GetValues(typeof(T))).ToDictionary(x => (short)((object)x), x => x);
                 }
             }
         }
@@ -262,7 +254,7 @@ namespace TarkovPacketSer.RetardedBitReader
             {
                 get
                 {
-                    return ((T[])Enum.GetValues(typeof(T))).ToDictionary(x=> (byte)((object)x), x=>x);
+                    return ((T[])Enum.GetValues(typeof(T))).ToDictionary(x => (byte)((object)x), x => x);
                 }
             }
         }

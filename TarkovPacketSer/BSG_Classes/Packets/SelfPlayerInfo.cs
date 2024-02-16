@@ -1,5 +1,4 @@
 ﻿using TarkovPacketSer.RetardedBitReader;
-using static TarkovPacketSer.BSG_Classes.Packets.DeserializerPacketsEXT;
 
 namespace TarkovPacketSer.BSG_Classes.Packets
 {
@@ -122,7 +121,7 @@ namespace TarkovPacketSer.BSG_Classes.Packets
         public float ServerWorldTime;
 
         public List<HitInfo> HitInfos;
-        
+
         public List<DHitInfo> DetailedHitInfo;
 
         public List<ArmorUpdate> ArmorUpdates;
