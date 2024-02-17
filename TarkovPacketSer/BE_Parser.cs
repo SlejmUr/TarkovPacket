@@ -68,31 +68,31 @@ namespace TarkovPacketSer
 
                 switch (msg)
                 {
-                    case MsgTypeEnum.SubWorldSpawnSearchLoot:/*
+                    case MsgTypeEnum.SubWorldSpawnSearchLoot:
                         baseJsons.Add(new BaseJson()
                         {
                             Json = SubWorldSpawnSearchLoot.Deserialize(bytes),
                             Time = realname,
                             MsgType = msg
-                        });*/
+                        });
                         break;
                     case MsgTypeEnum.SubWorldSpawnLoot:
-                        /*
+                        
                         baseJsons.Add(new BaseJson()
                         {
                             Json = SubWorldSpawnLoot.Deserialize(bytes),
                             Time = realname,
                             MsgType = msg
-                        });*/
+                        });
                         break;
                     case MsgTypeEnum.WorldSpawn:
-                        /*
+                        
                         baseJsons.Add(new BaseJson()
                         {
                             Json = WorldSpawn.Deserialize(bytes),
                             Time = realname,
                             MsgType = msg
-                        });*/
+                        });
                         break;
                     default:
                         break;

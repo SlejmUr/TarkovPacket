@@ -56,12 +56,9 @@ namespace TarkovPacketSer.BE_PacketFormat
         }
         public void Deserializer(byte[] data)
         {
-            Console.WriteLine("Deserializer: ");
             MyReader reader = new(data);
             ChannnelId = reader.ReadByte();
             MessageType = (EMessageFromServerType)reader.ReadLimitedInt32(0, 3);
-            Console.WriteLine("ChannelId: " + ChannnelId);
-            Console.WriteLine("MessageType: " + MessageType.ToString());
             if (MessageType == EMessageFromServerType.Player)
             {
                 PlayerData.AddRange(reader.Buffer);
@@ -91,14 +88,6 @@ namespace TarkovPacketSer.BE_PacketFormat
                 }
 
             }
-        }
-
-        public void TryDoFunny()
-        {
-            File.WriteAllBytes("test", PlayerData.ToArray());
-            MyReader reader = new(PlayerData.ToArray());
-            var clientPlayer = ClientPlayer.Deserialize(reader);
-            Data = clientPlayer;
         }
 
         public byte ChannnelId;
