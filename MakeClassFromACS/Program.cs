@@ -1,5 +1,13 @@
 ﻿using Mono.Cecil;
 using Mono.Cecil.Rocks;
+using ICSharpCode.Decompiler;
+using ICSharpCode.Decompiler.CSharp;
+using ICSharpCode.Decompiler.CSharp.ProjectDecompiler;
+using ICSharpCode.Decompiler.DebugInfo;
+using ICSharpCode.Decompiler.Disassembler;
+using ICSharpCode.Decompiler.Metadata;
+using ICSharpCode.Decompiler.Solution;
+using ICSharpCode.Decompiler.TypeSystem;
 
 namespace MakeClassFromACS
 {
@@ -8,6 +16,15 @@ namespace MakeClassFromACS
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
+            string assemblyFileName = "Assembly-CSharp.dll";
+
+            var module = new PEFile(assemblyFileName);
+            var resolver = new UniversalAssemblyResolver(assemblyFileName, false, module.Metadata.DetectTargetFrameworkId());
+
+            CSharpDecompiler decompiler =  new CSharpDecompiler(assemblyFileName, resolver, new DecompilerSettings( LanguageVersion.Latest ));
+
+            //decompiler.DecompileTypeAsString();
+            
             List<TypeDefinition> Descriptors = new();
             var def = AssemblyDefinition.ReadAssembly("Assembly-CSharp.dll");
 
@@ -39,61 +56,9 @@ namespace MakeClassFromACS
 
 
                 var resolvedItem = item.Resolve();
-
-                if (resolvedItem.IsPublic)
-                {
-                    thingsToCSharp = "public";
-                }
-                else
-                {
-                    thingsToCSharp = "private";
-                }
-                if (resolvedItem.IsAbstract)
-                {
-                    thingsToCSharp += " abstract";
-                }
-
-                if (resolvedItem.IsSealed)
-                {
-                    thingsToCSharp += " sealed";
-                }
-
-                if (resolvedItem.IsClass)
-                {
-                    thingsToCSharp += " class";
-                }
-                else
-                {
-                    thingsToCSharp += " struct";
-                }
-
-
-
-                thingsToCSharp += $" {item.Name}";
-                thingsToCSharp += $" : {item.BaseType.Name}";
-
-                thingsToCSharp += "\n{\n";
-                foreach (var fieldDefinition in resolvedItem.Fields)
-                {
-                    if (fieldDefinition.IsPublic)
-                    {
-                        thingsToCSharp += "\tpublic ";
-                    }
-                    else
-                    {
-                        thingsToCSharp += "\tprivate ";
-                    }
-
-                    Console.WriteLine(fieldDefinition.FieldType.ToString());
-                    Console.WriteLine(fieldDefinition.FieldType.Name);
-                    Console.WriteLine(fieldDefinition.FieldType.Namespace);
-                    thingsToCSharp += fieldDefinition.FieldType.Name;
-                    thingsToCSharp += " ";
-                    thingsToCSharp += fieldDefinition.Name;
-                    Console.WriteLine(fieldDefinition.FullName);
-                    thingsToCSharp += ";\n";
-                }
-                thingsToCSharp += "}";
+                
+                var name = new FullTypeName(resolvedItem.FullName);
+                thingsToCSharp = decompiler.DecompileTypeAsString(name);
                 File.WriteAllText($"test/test_{item.FullName}.cs", thingsToCSharp);
             }
         }
